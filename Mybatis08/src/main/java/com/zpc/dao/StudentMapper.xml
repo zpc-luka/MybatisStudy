@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zpc.dao.StudentMapper">
+
+<!--    在当前Mapper中使用二级缓存-->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+    <select id="queryStudent" resultType="Student" useCache="true">
+        select * from Student where id = #{id}
+    </select>
+</mapper>

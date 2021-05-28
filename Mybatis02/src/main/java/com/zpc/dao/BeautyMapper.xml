@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpc.dao.BeautyMapper">
+    <select id="getBeautyList" resultType="Beauty">
+        select * from beauty
+    </select>
+
+    <select id="getBeautyById" parameterType="int" resultType="Beauty">
+        select * from beauty where id = #{id};
+    </select>
+    
+    <insert id="addBeauty" parameterType="Beauty">
+        insert into beauty (id,name,sex,boyfriend_id)
+        values (#{id}, #{name}, #{sex}, #{boyfriend_id});
+    </insert>
+
+    <update id="updateBeauty" parameterType="Beauty">
+        update beauty
+        set name = #{name}, boyfriend_id = #{boyfriend_id}
+        where id = #{id};
+    </update>
+
+    <delete id="deleteBeauty" parameterType="int">
+        delete from beauty where id = #{id};
+    </delete>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zpc.dao.BeautyMapper">
+
+    <!-- 结果集映射-->
+    <resultMap id="BeautyMap" type="Beauty">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+        <result column="boyfriend_id" property="boyfriend" />
+    </resultMap>
+
+    <!--!!!-->
+    <select id="getBeautyById" resultMap="BeautyMap">
+        select * from beauty where id = #{id};
+    </select>
+    
+    <select id="getBeautyByLimit" parameterType="map" resultMap="BeautyMap">
+        select * from Beauty limit #{startIndex}, #{pageSize}
+    </select>
+
+    <select id="getBeautyRowBounds" resultMap="BeautyMap">
+        select * from Beauty;
+    </select>
+
+</mapper>
